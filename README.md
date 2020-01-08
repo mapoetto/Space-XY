@@ -1,3 +1,4 @@
+![alt text](https://raw.githubusercontent.com/mapoetto/Space-XY/master/ICONA.ico "Logo")
 # Space-XY
 It is an online BattleShip game based on a client-Server-client architecture.
 Comunication take place over TCP sockets on port 9090
