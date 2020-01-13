@@ -4,6 +4,7 @@
 
 # DEMO
 ![alt text](https://github.com/mapoetto/Space-XY/blob/master/def_demo.gif?raw=true "Demo")
+(Graphic quality has been reduced due to GIF making process)
 
 Once you have downloaded the game, there is no need to install, just open and play !! (Ensure you have the right JRE in your folder)
 If the server is online, users can simply log-in by choosing whatever username, then check users online list, and just challange them!
