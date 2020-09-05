@@ -87,7 +87,7 @@ public class ClientThread extends Thread{
         	MF.updateLog(new LogMessage("Socket","Server not found: " + ex.getMessage(),dtf.format(LocalTime.now())));
         	
         	MF.lblError.setText(MF.normalTxtError);
-        	MF.lblError.setText(MainFrame.addWordBeforeTag(MF.lblError.getText(), "</font>", "Ci dispiace comandante, l'indirizzo del server è sconosciuto !!"));
+        	MF.lblError.setText(MainFrame.addWordBeforeTag(MF.lblError.getText(), "</font>", "Ci dispiace comandante, l'indirizzo del server ï¿½ sconosciuto !!"));
         	
         	Thread t = new Thread("my non EDT thread") {
    	            public void run() {
@@ -172,7 +172,7 @@ public class ClientThread extends Thread{
 					   	            	        
 			   	            					MF.griglia.setQuadGreen(tmpQuad.toString());
 			   	            					
-			   	            					if(MF.buttonCheck_ViewGriglia.isClicked()) {//splittedView è attivo
+			   	            					if(MF.buttonCheck_ViewGriglia.isClicked()) {//splittedView ï¿½ attivo
 			   	            						MF.lblCaption.setText("<html><center><div style=\"border: 1px solid white; padding: 3px; background-color: rgba(5,5,5, 0.5);\"><font size=\""+MF.getDimensionRatio(6)+"\" style=\"color: white; font-family: " + MainFrame.font.getFamily() + ";\">Aspettando 1,5 Secondi...</font></div></center></html>");
 			   	            						try {
 														Thread.sleep(1500);
@@ -189,7 +189,7 @@ public class ClientThread extends Thread{
 					   	            	        
 			   	            					MF.griglia.setQuadRed(tmpQuad.toString());
 			   	            					
-			   	            					if(MF.buttonCheck_ViewGriglia.isClicked()) {//splittedView è attivo
+			   	            					if(MF.buttonCheck_ViewGriglia.isClicked()) {//splittedView ï¿½ attivo
 			   	            						MF.lblCaption.setText("<html><center><div style=\"border: 1px solid white; padding: 3px; background-color: rgba(5,5,5, 0.5);\"><font size=\""+MF.getDimensionRatio(6)+"\" style=\"color: white; font-family: " + MainFrame.font.getFamily() + ";\">Aspettando 1,5 Secondi...</font></div></center></html>");
 			   	            						try {
 														Thread.sleep(1500);
@@ -202,7 +202,7 @@ public class ClientThread extends Thread{
 			   	            					
 					   	            		}else if(msg.getFirstParam().equals(CmdCommands.setMyFlottaOK)){
 					   	            			
-			   	            					//la tua flotta è stata settata correttamente
+			   	            					//la tua flotta ï¿½ stata settata correttamente
 			   	            					
 			   	            					MF.lblCaption.setText("<html><center><div style=\"border: 1px solid white; padding: 3px; background-color: rgba(5,5,5, 0.5);\"><font size=\""+MF.getDimensionRatio(6)+"\" style=\"color: white; font-family: " + MainFrame.font.getFamily() + ";\">Stai giocando contro "+currentGame.getAvversario(me).getUsername()+" - In attesa della flotta avversaria.. </font></div></center></html>");
 					   	            			MF.updateGUI();
@@ -248,7 +248,7 @@ public class ClientThread extends Thread{
 					   	            			
 					   	            		}else if(msg.getFirstParam().equals(CmdCommands.setMeFree)){
 					   	            			
-					   	            			MF.updateLog(new LogMessage("Game","L'utente "+ ((Utente)msg.getSecondParam()).getUsername() + " è andato offline, per questo terminiamo la partita",dtf.format(LocalTime.now())));
+					   	            			MF.updateLog(new LogMessage("Game","L'utente "+ ((Utente)msg.getSecondParam()).getUsername() + " ï¿½ andato offline, per questo terminiamo la partita",dtf.format(LocalTime.now())));
 					   	            			
 					   	            			currentGame = null;
 					   	            			MF.resetGame();
@@ -294,7 +294,7 @@ public class ClientThread extends Thread{
 					   	            				
 					   	            				if(msg.getThirdParam() instanceof ArrayList<?> && msg.getThirdParam().get(0) instanceof Utente) {
 					   	            					
-					   	            					//se le condizioni dell'if sono verificate, il Serverthread avrà sicuramente inviato un tipo Utente
+					   	            					//se le condizioni dell'if sono verificate, il Serverthread avrï¿½ sicuramente inviato un tipo Utente
 					   	            					ArrayList<Utente> tmpList = (ArrayList<Utente>)msg.getThirdParam();
 					   	            					
 					   	            					MF.updateLog(new LogMessage("System","Ecco le persone online:",dtf.format(LocalTime.now())));
@@ -310,12 +310,12 @@ public class ClientThread extends Thread{
 						   	            				
 						   	            				MF.updateGUI();
 					   	            				}else {
-					   	            					MF.updateLog(new LogMessage("System","La lista degli online non è un ArrayList",dtf.format(LocalTime.now())));
+					   	            					MF.updateLog(new LogMessage("System","La lista degli online non ï¿½ un ArrayList",dtf.format(LocalTime.now())));
 					   	            				}
 					   	            			}else {
 					   	            				MF.myData.getListModel().removeAllElements();
 					   	            				MF.lblLobby.setText(MainFrame.addWordBeforeTag(MF.normalTxtLobby, "</font>", "0"));
-					   	            				MF.updateLog(new LogMessage("System","Non c'è nessuno online oltre te",dtf.format(LocalTime.now())));
+					   	            				MF.updateLog(new LogMessage("System","Non c'ï¿½ nessuno online oltre te",dtf.format(LocalTime.now())));
 					   	            			}
 					   	            		}else if(msg.getFirstParam().equals(CmdCommands.wannaPlayWith)){
 					   	            			
@@ -327,14 +327,14 @@ public class ClientThread extends Thread{
 				   	            					MF.startDialogue(tmpUtente);
 				   	            					
 				   	            				}else {
-				   	            					MF.updateLog(new LogMessage("Game","FATAL ERROR: lo sfidante non è un utente valido",dtf.format(LocalTime.now())));
+				   	            					MF.updateLog(new LogMessage("Game","FATAL ERROR: lo sfidante non ï¿½ un utente valido",dtf.format(LocalTime.now())));
 				   	            				}
 					   	            			
 					   	            		}else if(msg.getFirstParam().equals(CmdCommands.waitingForResponse)){
 					   	            			MF.updateLog(new LogMessage("Game","Richiesta di gioco inoltrata... siamo in attesa di un responso...",dtf.format(LocalTime.now())));
 					   	            		}else if(msg.getFirstParam().equals(CmdCommands.userBusy)){
 					   	            			
-					   	            			MF.updateLog(new LogMessage("Game","L'utente non può essere sfidato in quanto è già impegnato in un'altra partita",dtf.format(LocalTime.now())));
+					   	            			MF.updateLog(new LogMessage("Game","L'utente non puï¿½ essere sfidato in quanto ï¿½ giï¿½ impegnato in un'altra partita",dtf.format(LocalTime.now())));
 					   	            			
 					   	            		}else if(msg.getFirstParam().equals(CmdCommands.answerNO)){
 					   	            			
@@ -349,7 +349,7 @@ public class ClientThread extends Thread{
 					   	            		}
 					   	            		MF.updateLog(new LogMessage("Socket","RICEVO: " + msg,dtf.format(LocalTime.now())));
 					   	            		
-			   	            			}else { //il primo paramentro è instanceof Game
+			   	            			}else { //il primo paramentro ï¿½ instanceof Game
 			   	            				
 			   	            				Game tmpGame = (Game)msg.getFirstParam();
 			   	            				
@@ -392,9 +392,9 @@ public class ClientThread extends Thread{
 			   	            					if(!MF.pannelloStats.isEntrata())
 			   	            						MF.pannelloStats.entra();
 			   	            					
-			   	            					if(tmpGame.getTurno().getSESSION().equals(me.getSESSION())) { // è il mio turno
+			   	            					if(tmpGame.getTurno().getSESSION().equals(me.getSESSION())) { // ï¿½ il mio turno
 			   	            						
-				   	            					if(MF.buttonCheck_ViewGriglia.isClicked()) {//splittedView è attivo
+				   	            					if(MF.buttonCheck_ViewGriglia.isClicked()) {//splittedView ï¿½ attivo
 				   	            						MF.lblCaption.setText("<html><center><div style=\"border: 1px solid white; padding: 3px; background-color: rgba(5,5,5, 0.5);\"><font size=\""+MF.getDimensionRatio(6)+"\" style=\"color: white; font-family: " + MainFrame.font.getFamily() + ";\">Aspettando 1,5 Secondi...</font></div></center></html>");
 				   	            						try {
 															Thread.sleep(1500);
@@ -413,7 +413,7 @@ public class ClientThread extends Thread{
 			   	            						
 			   	            					}else {
 			   	            						
-				   	            					if(MF.buttonCheck_ViewGriglia.isClicked()) {//splittedView è attivo
+				   	            					if(MF.buttonCheck_ViewGriglia.isClicked()) {//splittedView ï¿½ attivo
 				   	            						MF.lblCaption.setText("<html><center><div style=\"border: 1px solid white; padding: 3px; background-color: rgba(5,5,5, 0.5);\"><font size=\""+MF.getDimensionRatio(6)+"\" style=\"color: white; font-family: " + MainFrame.font.getFamily() + ";\">Aspettando 1,5 Secondi...</font></div></center></html>");
 				   	            						try {
 															Thread.sleep(1500);
@@ -437,7 +437,7 @@ public class ClientThread extends Thread{
 			   	            					if(MF.myData.game.getStato().equals("Iniziale"))
 			   	            						MF.myData.game.setStato("iniziato");
 			   	            					
-			   	            					if(tmpGame.getTurno().getSESSION().equals(me.getSESSION())) { // è il mio turno
+			   	            					if(tmpGame.getTurno().getSESSION().equals(me.getSESSION())) { // ï¿½ il mio turno
 			   	            						
 			   	            						MF.griglia.setMyTurno(true);
 			   	            						
@@ -461,7 +461,7 @@ public class ClientThread extends Thread{
 		   	            						int newPercentuale = (int)(quadColpiti*100)/MF.griglia.getStackQuad().size();
 		   	            						MF.pannelloStats.setTerzoPaneNumber(String.valueOf(newPercentuale)+"%");
 		   	            						
-			   	            					if(MF.buttonCheck_ViewGriglia.isClicked()) {//splittedView è attivo
+			   	            					if(MF.buttonCheck_ViewGriglia.isClicked()) {//splittedView ï¿½ attivo
 			   	            						MF.lblCaption.setText("<html><center><div style=\"border: 1px solid white; padding: 3px; background-color: rgba(5,5,5, 0.5);\"><font size=\""+MF.getDimensionRatio(6)+"\" style=\"color: white; font-family: " + MainFrame.font.getFamily() + ";\">Aspettando 1,5 Secondi...</font></div></center></html>");
 			   	            						try {
 														Thread.sleep(1500);
@@ -526,10 +526,10 @@ public class ClientThread extends Thread{
 			   	            						
 			   	            						
 			   	            					}else {
-			   	            						MF.updateLog(new LogMessage("Game","ERRORE: non è stato possibile aggiornare le statistiche",dtf.format(LocalTime.now())));
+			   	            						MF.updateLog(new LogMessage("Game","ERRORE: non ï¿½ stato possibile aggiornare le statistiche",dtf.format(LocalTime.now())));
 			   	            					}
 			   	            					
-			   	            					if(MF.buttonCheck_ViewGriglia.isClicked()) {//splittedView è attivo
+			   	            					if(MF.buttonCheck_ViewGriglia.isClicked()) {//splittedView ï¿½ attivo
 			   	            						MF.lblCaption.setText("<html><center><div style=\"border: 1px solid white; padding: 3px; background-color: rgba(5,5,5, 0.5);\"><font size=\""+MF.getDimensionRatio(6)+"\" style=\"color: white; font-family: " + MainFrame.font.getFamily() + ";\">Aspettando 1,5 Secondi...</font></div></center></html>");
 			   	            						try {
 														Thread.sleep(1500);
@@ -560,11 +560,11 @@ public class ClientThread extends Thread{
 			   	            	}
 			   	            } while (mayIListen == true && !socket.isClosed());
 			       			
-			       		} catch (IOException e) {//Il server è andato offline o ha chiuso la connessione
+			       		} catch (IOException e) {//Il server ï¿½ andato offline o ha chiuso la connessione
 			       			
 			       			e.printStackTrace();
 			       			
-							MF.updateLog(new LogMessage("Socket","Il Server (socket) è offline",dtf.format(LocalTime.now())));
+							MF.updateLog(new LogMessage("Socket","Il Server (socket) ï¿½ offline",dtf.format(LocalTime.now())));
 							MF.updateLog(new LogMessage("Socket",e.getMessage(),dtf.format(LocalTime.now())));
 							
 			       			try {

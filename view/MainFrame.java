@@ -173,7 +173,7 @@ public class MainFrame { //VIEW
 	public int getDimensionRatio(int Dimension) {
 		//funzione per rendere il layout responsive
 		
-		int valoreDiRiferimento = 1000; //il layout è stato costruito su una base quadrata di 1000 x 1000
+		int valoreDiRiferimento = 1000; //il layout ï¿½ stato costruito su una base quadrata di 1000 x 1000
 		
 		//1000 sta a Dimension come FRAMEDIMENSION sta a x
 		//x:y = a:b 
@@ -187,7 +187,7 @@ public class MainFrame { //VIEW
 	/*
 	 * DESCRIZIONE DELLA LOGICA DI BASE SU CUI FUNZIONA LA GUI
 	 * 
-	 * MainFrame è la classe padre (nonchè il VIEW di MVC)
+	 * MainFrame ï¿½ la classe padre (nonchï¿½ il VIEW di MVC)
 	 * Qui vengono create le pagine della GUI che sono rappresentate dalla classe Page 
 	 * 
 	 * 
@@ -508,17 +508,17 @@ public class MainFrame { //VIEW
 	   		            	
 	   		            	if(griglia.getNaviInserite().size() != griglia.getNaviDaInserire().size()) {
 	   		            		try {
-									clientThread.send(new Pacchetto (CmdCommands.iLostTheGame,"Hai perso perchè non hai posizionato le navi in tempo",null,true));
+									clientThread.send(new Pacchetto (CmdCommands.iLostTheGame,"Hai perso perchï¿½ non hai posizionato le navi in tempo",null,true));
 								} catch (IOException e1) {
 									// TODO Auto-generated catch block
 									e1.printStackTrace();
 									updateLog(new LogMessage("Socket","Errore nell'invio del pacchetto iLostGame",dtf.format(LocalTime.now())));
 								}
 	   		            		
-	   		            		updateLog(new LogMessage("Game","Hai perso la partita, poichè non hai posizionato tutte le navi in tempo!!",dtf.format(LocalTime.now())));
+	   		            		updateLog(new LogMessage("Game","Hai perso la partita, poichï¿½ non hai posizionato tutte le navi in tempo!!",dtf.format(LocalTime.now())));
 	   		            	}else {
 	   		            		
-	   		            		updateLog(new LogMessage("Game","Risultano " + griglia.getNaviInserite().size() + " navi inserite, dunque la partita può iniziare",dtf.format(LocalTime.now())));
+	   		            		updateLog(new LogMessage("Game","Risultano " + griglia.getNaviInserite().size() + " navi inserite, dunque la partita puï¿½ iniziare",dtf.format(LocalTime.now())));
 	   		            		
 	   		            		//invia le posizioni delle tue navi al server
 	   		            		
@@ -798,7 +798,7 @@ public class MainFrame { //VIEW
     	 lblGimmeUsr.setFont(font);
     	 lblGimmeUsr.setForeground(Color.white);
     	 lblGimmeUsr.setBounds(getDimensionRatio(250), getDimensionRatio(345), getDimensionRatio(531), getDimensionRatio(95));
-    	 lblGimmeUsr.setText("<html><center><font size=\""+getDimensionRatio(9)+"\" style=\" color: white; font-family: " + font.getFamily() + ";\">Benvenuto Comandante !!<br /> qual è il suo nome ?</font></center></html>");
+    	 lblGimmeUsr.setText("<html><center><font size=\""+getDimensionRatio(9)+"\" style=\" color: white; font-family: " + font.getFamily() + ";\">Benvenuto Comandante !!<br /> qual ï¿½ il suo nome ?</font></center></html>");
     	 
     	 TextInput username = new TextInput(getDimensionRatio(181));
     	 username.setText("Nome");

@@ -52,7 +52,7 @@ public class LateralPanel extends JPanel{
 		
 		this.type = type;
 		
-		this.height = quadratoWidth*6; //il pannello sarà alto quanto 6 quadrati
+		this.height = quadratoWidth*6; //il pannello sarï¿½ alto quanto 6 quadrati
 		
 		//170 width 300 height
 		//170 : 300 = x : height
@@ -182,7 +182,7 @@ public class LateralPanel extends JPanel{
 	   	    	 
 	   	    	 if(provenienza == 4) { //4 = viene da sinistra
 	   	    		label.setBounds(new Rectangle(label.getBounds().x, destinazioneY, label.getWidth(), label.getHeight()));
-		   	         if(r.getX() >= destinazioneX) {// finchè è visibile | r.getX() < 0 condizione per andare verso sinistra
+		   	         if(r.getX() >= destinazioneX) {// finchï¿½ ï¿½ visibile | r.getX() < 0 condizione per andare verso sinistra
 		   	        	 	label.setBounds(new Rectangle(destinazioneX, destinazioneY, label.getWidth(), label.getHeight()));
 		   	               ((Timer)evt.getSource()).stop();
 		   	               primoPane.setVisible(true);
@@ -190,7 +190,7 @@ public class LateralPanel extends JPanel{
 		   	               terzoPane.setVisible(true);
 		   	               entrata = true;
 		   	               
-		   	               System.out.println("Sono stoppato perchè "+r.getX()+" è maggiore di "+destinazioneX);
+		   	               System.out.println("Sono stoppato perchï¿½ "+r.getX()+" ï¿½ maggiore di "+destinazioneX);
 		   	         }else {
 		   	        	 label.setBounds(new Rectangle(r_old.getBounds().x+(2*count), destinazioneY, label.getWidth(), label.getHeight()));
 		   	        	 System.out.println("aggiungo alla x");

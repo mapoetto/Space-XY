@@ -24,7 +24,7 @@ public class Game implements Serializable{
 		this.SESSION = SESSION;
 		
 		this.setNumTurno(1);
-		this.setTurno(this.getSfidante()); //colui che è stato sfidato inizia per primo
+		this.setTurno(this.getSfidante()); //colui che ï¿½ stato sfidato inizia per primo
 		
 	}
 	

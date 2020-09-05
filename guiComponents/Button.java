@@ -48,7 +48,7 @@ public class Button extends JLabel implements MouseListener{
 	public int x,y;
 	/*
 	 * 
-	 * L'immagine è grande: 322x136
+	 * L'immagine ï¿½ grande: 322x136
 	 * quindi ha un rapporto moltiplicativo di 1x0.42236
 	 * 
 	 */
@@ -60,9 +60,9 @@ public class Button extends JLabel implements MouseListener{
 		this.y = y;
 		
 		this.text = text;
-		this.width = (width<100) ? 101 : width; //il minimo consentito è 100
+		this.width = (width<100) ? 101 : width; //il minimo consentito ï¿½ 100
 		this.height = (int)(this.width*0.42236);
-		double fattoreMolt1 = this.width / 10; //vede quanti 10 ci sono nel width (10 è la tolleranza, infatti valori che oscillano in un raggio di dimensione 10 hanno lo stesso font)
+		double fattoreMolt1 = this.width / 10; //vede quanti 10 ci sono nel width (10 ï¿½ la tolleranza, infatti valori che oscillano in un raggio di dimensione 10 hanno lo stesso font)
 		this.fontSize = 1 + (int)(fattoreMolt1 * 1.7);
 		
 		this.setPreferredSize(new Dimension(this.width, height));
@@ -159,7 +159,7 @@ public class Button extends JLabel implements MouseListener{
 	   	    	 JLayeredPane parent = (JLayeredPane)label.getParent();
 
 	   	    	 if(provenienza == 1) { //1 = esce verso l'alto
-		   	         if(r.getY() < 0 ) {// finchè è visibile | r.getX() < 0 condizione per andare verso sinistra
+		   	         if(r.getY() < 0 ) {// finchï¿½ ï¿½ visibile | r.getX() < 0 condizione per andare verso sinistra
 		   	        	 	label.setBounds(new Rectangle(0, 0, label.getWidth(), label.getHeight()));
 		   	               ((Timer)evt.getSource()).stop();
 		   	               label.setVisible(false);
@@ -168,7 +168,7 @@ public class Button extends JLabel implements MouseListener{
 		   	        	 label.setBounds(new Rectangle((int)r.getX(), (int)r.getY()-(20*count), label.getWidth(), label.getHeight()));
 		   	         }
 	   	    	 }else if(provenienza == 2) { //2 = esce verso il basso
-		   	         if(r.getY() > parent.getHeight()) {// finchè è visibile | r.getX() < 0 condizione per andare verso sinistra
+		   	         if(r.getY() > parent.getHeight()) {// finchï¿½ ï¿½ visibile | r.getX() < 0 condizione per andare verso sinistra
 		   	        	 	label.setBounds(new Rectangle(0, 0, label.getWidth(), label.getHeight()));
 		   	               ((Timer)evt.getSource()).stop();
 		   	               label.setVisible(false);
@@ -177,7 +177,7 @@ public class Button extends JLabel implements MouseListener{
 		   	        	 label.setBounds(new Rectangle((int)r.getX(), (int)r.getY()+(20*count), label.getWidth(), label.getHeight()));
 		   	         }
 	   	    	 }else if(provenienza == 3) { //3 = esce verso destra
-		   	         if(r.getX() > parent.getWidth()) {// finchè è visibile | r.getX() < 0 condizione per andare verso sinistra
+		   	         if(r.getX() > parent.getWidth()) {// finchï¿½ ï¿½ visibile | r.getX() < 0 condizione per andare verso sinistra
 		   	        	 	label.setBounds(new Rectangle(0, 0, label.getWidth(), label.getHeight()));
 		   	               ((Timer)evt.getSource()).stop();
 		   	               label.setVisible(false);
@@ -186,7 +186,7 @@ public class Button extends JLabel implements MouseListener{
 		   	        	 label.setBounds(new Rectangle((int)r.getX()+(20*count), (int)r.getY(), label.getWidth(), label.getHeight()));
 		   	         }
 	   	    	 }else if(provenienza == 4) { //4 = esce verso sinistra
-		   	         if(r.getX() < 0) {// finchè è visibile | r.getX() < 0 condizione per andare verso sinistra
+		   	         if(r.getX() < 0) {// finchï¿½ ï¿½ visibile | r.getX() < 0 condizione per andare verso sinistra
 		   	        	 	label.setBounds(new Rectangle(0, 0, label.getWidth(), label.getHeight()));
 		   	               ((Timer)evt.getSource()).stop();
 		   	               label.setVisible(false);
@@ -221,7 +221,7 @@ public class Button extends JLabel implements MouseListener{
 	   	    	 
 	   	    	 if(provenienza == 1) { //1 = viene dall'alto
 	   	    		label.setBounds(new Rectangle(destinazioneX, 0, label.getWidth(), label.getHeight()));
-		   	         if(r.getY() > destinazioneY) {// finchè è visibile | r.getX() < 0 condizione per andare verso sinistra
+		   	         if(r.getY() > destinazioneY) {// finchï¿½ ï¿½ visibile | r.getX() < 0 condizione per andare verso sinistra
 		   	        	 	label.setBounds(new Rectangle(destinazioneX, destinazioneY, label.getWidth(), label.getHeight()));
 		   	               ((Timer)evt.getSource()).stop();
 		   	               label.setInteragibile(true);
@@ -231,7 +231,7 @@ public class Button extends JLabel implements MouseListener{
 		   	         }
 	   	    	 }else if(provenienza == 2) { //2 = viene dal basso
 	   	    		label.setBounds(new Rectangle(destinazioneX, parent.getHeight(), label.getWidth(), label.getHeight()));
-		   	         if(r.getY() < destinazioneY) {// finchè è visibile | r.getX() < 0 condizione per andare verso sinistra
+		   	         if(r.getY() < destinazioneY) {// finchï¿½ ï¿½ visibile | r.getX() < 0 condizione per andare verso sinistra
 		   	        	 	label.setBounds(new Rectangle(destinazioneX, destinazioneY, label.getWidth(), label.getHeight()));
 		   	               ((Timer)evt.getSource()).stop();
 		   	               label.setInteragibile(true);
@@ -241,7 +241,7 @@ public class Button extends JLabel implements MouseListener{
 		   	         }
 	   	    	 }else if(provenienza == 3) { //3 = viene da destra
 	   	    		label.setBounds(new Rectangle(parent.getWidth(), destinazioneY, label.getWidth(), label.getHeight()));
-		   	         if(r.getX() < destinazioneX) {// finchè è visibile | r.getX() < 0 condizione per andare verso sinistra
+		   	         if(r.getX() < destinazioneX) {// finchï¿½ ï¿½ visibile | r.getX() < 0 condizione per andare verso sinistra
 		   	        	 	label.setBounds(new Rectangle(destinazioneX, destinazioneY, label.getWidth(), label.getHeight()));
 		   	               ((Timer)evt.getSource()).stop();
 		   	               label.setInteragibile(true);
@@ -251,7 +251,7 @@ public class Button extends JLabel implements MouseListener{
 		   	         }
 	   	    	 }else if(provenienza == 4) { //4 = viene da sinistra
 	   	    		label.setBounds(new Rectangle(0, destinazioneY, label.getWidth(), label.getHeight()));
-		   	         if(r.getX() > destinazioneX) {// finchè è visibile | r.getX() < 0 condizione per andare verso sinistra
+		   	         if(r.getX() > destinazioneX) {// finchï¿½ ï¿½ visibile | r.getX() < 0 condizione per andare verso sinistra
 		   	        	 	label.setBounds(new Rectangle(destinazioneX, destinazioneY, label.getWidth(), label.getHeight()));
 		   	               ((Timer)evt.getSource()).stop();
 		   	               label.setInteragibile(true);

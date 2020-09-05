@@ -32,8 +32,8 @@ public class Quadrato extends JLabel implements Serializable, MouseListener{
 	
 	private static final long serialVersionUID = 6545358173380098232L;
 	private String state; //indica il colore del bordo del quadrato
-	private boolean clickato = false; //indica se è stato clickato
-	private boolean scritto = false; //indica se il quadrato è associato ad una nave
+	private boolean clickato = false; //indica se ï¿½ stato clickato
+	private boolean scritto = false; //indica se il quadrato ï¿½ associato ad una nave
 	private int x , y ,width, height;
 	private boolean gameStarted = false;
 	private JLabel puntatore = new JLabel();
@@ -71,7 +71,7 @@ public class Quadrato extends JLabel implements Serializable, MouseListener{
 	public void updateView(boolean myTurn) {
 		
 		if(myTurn) { 
-			//se è il mio turno nascondo tutti i border dei quadrati e anche le mie navi, e mostro solo l'immagine (colpita o mancata)
+			//se ï¿½ il mio turno nascondo tutti i border dei quadrati e anche le mie navi, e mostro solo l'immagine (colpita o mancata)
 			
 			this.state = "Normal";
 			if(realState != null)

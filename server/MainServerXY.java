@@ -196,13 +196,13 @@ public class MainServerXY implements Runnable{
 	 */
 	public int addPanelThread(final ServerThread th, SocketAddress clientAddress) {
 		
-		final JPanel panel = new JPanel(); 		 //panel è il pannello padre della GUI relativa ad un client
+		final JPanel panel = new JPanel(); 		 //panel ï¿½ il pannello padre della GUI relativa ad un client
 		final String session = th.getSESSION();
 		panel.setLayout(new WrapLayout());
 		panel.setName(session);
 		panel.setSize(500, 90);
 		
-		JPanel topPanel = new JPanel();			//topPanel è il pannello posto superiormente
+		JPanel topPanel = new JPanel();			//topPanel ï¿½ il pannello posto superiormente
 		topPanel.setLayout(new BorderLayout());
 		topPanel.setPreferredSize(new Dimension(500, 20));
 		
@@ -245,7 +245,7 @@ public class MainServerXY implements Runnable{
 						if(!PoolThread.deleteSocket((ServerThread)tmpTh, session)) 
 							log("Impossibile trovare il socket con questa sessione: " + session);
 						else {
-							log("Il socket: " + session + " è stato disconnesso");
+							log("Il socket: " + session + " ï¿½ stato disconnesso");
 						}
 					} catch (Exception e1) {
 						// TODO Auto-generated catch block
@@ -345,7 +345,7 @@ public class MainServerXY implements Runnable{
 	
 	/*
 	 * Quando si setta un JEditorPane con text/html, il testo viene inserito in una tipica pagina html contenente i tag HTML, HEAD e BODY... 
-	 * quindi se si vuole aggiornare il JEditoPane, è utile inserire il testo da aggiornare prima di un tag (solitamente BODY) 
+	 * quindi se si vuole aggiornare il JEditoPane, ï¿½ utile inserire il testo da aggiornare prima di un tag (solitamente BODY) 
 	 * 
 	 */
 	
@@ -377,7 +377,7 @@ public class MainServerXY implements Runnable{
 			}
 		}*/
 		
-		System.out.println("Quantità di game: ->"+listaGame.size());
+		System.out.println("Quantitï¿½ di game: ->"+listaGame.size());
 		
 		for (int i = 0; i < listaGame.size(); i++) {
 			if(listaGame.get(i).getSESSION().equals(game.getSESSION()) && !(listaGame.get(i).getStato().equals("finito"))) {
@@ -437,7 +437,7 @@ public class MainServerXY implements Runnable{
 						for(Quadrato tmpQuad : flotta) {
 							if(tmpQuad.getName().equals(quad.getName())) {
 								
-								//Comunico al serverThread il quadrato dell'avversario, in modo che poi al clientThread verrà notificato tale quadrato, per poter capire quale Nave ha colpito
+								//Comunico al serverThread il quadrato dell'avversario, in modo che poi al clientThread verrï¿½ notificato tale quadrato, per poter capire quale Nave ha colpito
 								PoolThread.getThread(ut.getSESSION()).quadAvversario = tmpQuad;
 								
 								return true;
@@ -492,7 +492,7 @@ public class MainServerXY implements Runnable{
 	
 	public synchronized static void endGame(Utente vincitore, Utente perdente, Game game) {
 		
-		//il perdente è stato già notificato dal suo serverThread
+		//il perdente ï¿½ stato giï¿½ notificato dal suo serverThread
 		//quindi qui dobbiamo notificare il vincitore che ha vinto
 		
 		
@@ -520,7 +520,7 @@ public class MainServerXY implements Runnable{
 	}
 	
 	public static void log(String s) {
-		areaMessaggi.append(s + "\n"); //il metodo append è thread-safe
+		areaMessaggi.append(s + "\n"); //il metodo append ï¿½ thread-safe
 		 frame.repaint();
 	}
 

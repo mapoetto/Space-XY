@@ -51,7 +51,7 @@ public class Griglia extends JPanel implements MouseMotionListener, MouseListene
 	private boolean myTurno = false;
 	private String naveClickata;
 	private transient DateTimeFormatter dtf = DateTimeFormatter.ofPattern("HH:mm:ss");
-	final int unità;
+	final int unitï¿½;
 	private String oldNaveClickata;
 	public Font font;
 	
@@ -65,7 +65,7 @@ public class Griglia extends JPanel implements MouseMotionListener, MouseListene
 		this.setOpaque(false);
 		this.font = mf.font;
 		
-		unità = this.mf.getDimensionRatio(50);
+		unitï¿½ = this.mf.getDimensionRatio(50);
 		
 		griglia.initialize();
 	}
@@ -140,59 +140,59 @@ public class Griglia extends JPanel implements MouseMotionListener, MouseListene
 		Runnable createGui = new Runnable() {
 			public void run() {
 				
-				int xg = unità;
-				int yg = unità;
+				int xg = unitï¿½;
+				int yg = unitï¿½;
 				Quadrato tmpLabel = null;
 				
-				while(xg <= (unità*10)) {
-					yg = unità;
+				while(xg <= (unitï¿½*10)) {
+					yg = unitï¿½;
 					
-					while(yg <= (unità*10)) {
-						tmpLabel = new Quadrato(xg,yg,unità,unità, xg/unità, yg/unità);
+					while(yg <= (unitï¿½*10)) {
+						tmpLabel = new Quadrato(xg,yg,unitï¿½,unitï¿½, xg/unitï¿½, yg/unitï¿½);
 						
 						griglia.add(tmpLabel);
 						listaComps.add(tmpLabel);
 						
-						yg = yg + unità;
+						yg = yg + unitï¿½;
 					}
-					xg = xg+unità;
+					xg = xg+unitï¿½;
 				}
 				
 				xg = 0;
-				yg = unità;
+				yg = unitï¿½;
 				
 				int numDiv;
 				JLabel tmpLabelCoord;
 				
-				while(yg <= (unità*10)) {
+				while(yg <= (unitï¿½*10)) {
 					
 					tmpLabelCoord = new JLabel();
-					numDiv = yg /unità;
+					numDiv = yg /unitï¿½;
 					tmpLabelCoord.setText("Y_" + numDiv);
 					tmpLabelCoord.setForeground(Color.white);
 					
-					tmpLabelCoord.setBounds(0, yg, unità, unità);
+					tmpLabelCoord.setBounds(0, yg, unitï¿½, unitï¿½);
 					
 					griglia.add(tmpLabelCoord);
 					
-					yg = yg+unità;
+					yg = yg+unitï¿½;
 				}
 				
-				xg = unità;
+				xg = unitï¿½;
 				yg = 0;
 				
-				while(xg <= (unità*10)) {
+				while(xg <= (unitï¿½*10)) {
 					
 					tmpLabelCoord = new JLabel();
-					numDiv = xg /unità;
+					numDiv = xg /unitï¿½;
 					tmpLabelCoord.setText("X_" + numDiv);
 					tmpLabelCoord.setForeground(Color.white);
 					
-					tmpLabelCoord.setBounds(xg, 0, unità, unità);
+					tmpLabelCoord.setBounds(xg, 0, unitï¿½, unitï¿½);
 					
 					griglia.add(tmpLabelCoord);
 					
-					xg = xg+unità;
+					xg = xg+unitï¿½;
 				}
 				
 				griglia.setVisible(true);
@@ -226,7 +226,7 @@ public class Griglia extends JPanel implements MouseMotionListener, MouseListene
 				
 				Quadrato qdr = (Quadrato)findComponentAt(e.getPoint());
 				
-				//qdr è il quadrato su cui scorre il mouse
+				//qdr ï¿½ il quadrato su cui scorre il mouse
 				
 			}
 			
@@ -272,19 +272,19 @@ public class Griglia extends JPanel implements MouseMotionListener, MouseListene
 		/*
 		 * 
 		 * Calcolo quanti quadrati AL MINIMO sono necessari per disegnare quella draggedImg
-		 * poi sposto il cursore all'origine del quadrato più vicino, per aiutarlo ad inserirlo correttamente
-		 * ovvero, prendi la posizione del mouse, trova lo spigolo in alto a sinistra più vicino e disegnalo a partire da la
+		 * poi sposto il cursore all'origine del quadrato piï¿½ vicino, per aiutarlo ad inserirlo correttamente
+		 * ovvero, prendi la posizione del mouse, trova lo spigolo in alto a sinistra piï¿½ vicino e disegnalo a partire da la
 		 * 
 		 * 
 		 * 
-		 * draggedImg è una variabile TEMP che viene settata nella classe PaginaNavi, quando l'utente fa click su un oggetto Nave
+		 * draggedImg ï¿½ una variabile TEMP che viene settata nella classe PaginaNavi, quando l'utente fa click su un oggetto Nave
 		 * 
 		 * 
 		 */
 		
 		
 		
-		//controlla navi che sono in "floating" cioè sono state selezionate senza essere posizionate
+		//controlla navi che sono in "floating" cioï¿½ sono state selezionate senza essere posizionate
 		checkFloatShips();
 		
 		NaveInserita draggedImg = listaDraggedImgs.get(getDraggedImgByNave(naveClickata));
@@ -295,18 +295,18 @@ public class Griglia extends JPanel implements MouseMotionListener, MouseListene
 		
 		if(draggedImg != null) {
 			
-			int numQuadratiLunghezza = (int)draggedImg.getWidth()/unità;
-			int numQuadratiAltezza = (int)(numQuadratiLunghezza * (draggedImg.getHeight()/unità) - numQuadratiLunghezza);
+			int numQuadratiLunghezza = (int)draggedImg.getWidth()/unitï¿½;
+			int numQuadratiAltezza = (int)(numQuadratiLunghezza * (draggedImg.getHeight()/unitï¿½) - numQuadratiLunghezza);
 			
 			int numQuadratiTot = numQuadratiLunghezza + numQuadratiAltezza;
 			
-			//System.out.println("Lunghezza->:"+numQuadratiLunghezza+"esce da:"+draggedImg.getWidth()+"diviso"+unità);
+			//System.out.println("Lunghezza->:"+numQuadratiLunghezza+"esce da:"+draggedImg.getWidth()+"diviso"+unitï¿½);
 			
 			if(shouldIdraw) {
 				mayIwrite = true;
 				
 				
-				//se la nave che si sta muovendo sulla griglia, era già posizionata, bisogna rimuovere i suoi quadratri precedentemente intersecati
+				//se la nave che si sta muovendo sulla griglia, era giï¿½ posizionata, bisogna rimuovere i suoi quadratri precedentemente intersecati
 				
 				int tmpInd = 0;
 				for(int j = 0; j< naviDaInserire.size(); j++) {
@@ -320,7 +320,7 @@ public class Griglia extends JPanel implements MouseMotionListener, MouseListene
 				
 				
 				
-				//prendi la posizione del mouse, trova lo spigolo in alto a sinistra più vicino e disegnalo a partire da la
+				//prendi la posizione del mouse, trova lo spigolo in alto a sinistra piï¿½ vicino e disegnalo a partire da la
 				for(Quadrato jcTmp : listaComps) {
 					if(jcTmp instanceof Quadrato) {
 						if(jcTmp.getBounds().contains(e.getPoint())) {
@@ -335,7 +335,7 @@ public class Griglia extends JPanel implements MouseMotionListener, MouseListene
 				draggedImg.setVisible(true);
 				this.repaint();
 				
-				//questa lista servirà al metodo successivo per capire se può effettivamente disegnare quella nave, quindi qui lo puliamo se era stato già settato da altre navi
+				//questa lista servirï¿½ al metodo successivo per capire se puï¿½ effettivamente disegnare quella nave, quindi qui lo puliamo se era stato giï¿½ settato da altre navi
 				quadratiIntersecati.removeAll(quadratiIntersecati);
 				
 				int numeroQuadratiIntersecati = 0;
@@ -372,9 +372,9 @@ public class Griglia extends JPanel implements MouseMotionListener, MouseListene
 				}
 				
 				Point inAltoSinistra = new Point(draggedImg.getX(), draggedImg.getY());
-				Point inAltoDestra = new Point(draggedImg.getX()+draggedImg.getWidth()-unità, draggedImg.getY());
-				Point inBassoDestra = new Point(draggedImg.getX()+draggedImg.getWidth()-unità, draggedImg.getY()+draggedImg.getHeight()-unità);
-				Point inBassoSinistra = new Point(draggedImg.getX(), draggedImg.getY()+draggedImg.getHeight()-unità);
+				Point inAltoDestra = new Point(draggedImg.getX()+draggedImg.getWidth()-unitï¿½, draggedImg.getY());
+				Point inBassoDestra = new Point(draggedImg.getX()+draggedImg.getWidth()-unitï¿½, draggedImg.getY()+draggedImg.getHeight()-unitï¿½);
+				Point inBassoSinistra = new Point(draggedImg.getX(), draggedImg.getY()+draggedImg.getHeight()-unitï¿½);
 				
 				Rectangle q_inAltoSinistra = getCornerQuadrato("in alto a sinistra", quadratiIntersecati);
 				Rectangle q_inAltoDestra = getCornerQuadrato("in alto a destra", quadratiIntersecati);
@@ -476,19 +476,19 @@ public class Griglia extends JPanel implements MouseMotionListener, MouseListene
 		
 		if(corner.equals("in alto a destra")) {
 			
-			tmpRect = new Rectangle(aDestra.getX(), inAlto.getY(), unità, unità); //se le coordinate della figura disegnata non sforano questo quadrato, allora vuol dire che quel lato è disegnato bene
+			tmpRect = new Rectangle(aDestra.getX(), inAlto.getY(), unitï¿½, unitï¿½); //se le coordinate della figura disegnata non sforano questo quadrato, allora vuol dire che quel lato ï¿½ disegnato bene
 			
 		}else if(corner.equals("in alto a sinistra")) {
 			
-			tmpRect = new Rectangle(aSinistra.getX(), inAlto.getY(), unità, unità); //se le coordinate della figura disegnata non sforano questo quadrato, allora vuol dire che quel lato è disegnato bene
+			tmpRect = new Rectangle(aSinistra.getX(), inAlto.getY(), unitï¿½, unitï¿½); //se le coordinate della figura disegnata non sforano questo quadrato, allora vuol dire che quel lato ï¿½ disegnato bene
 			
 		}else if(corner.equals("in basso a destra")) {
 			
-			tmpRect = new Rectangle(aDestra.getX(), inBasso.getY(), unità, unità); //se le coordinate della figura disegnata non sforano questo quadrato, allora vuol dire che quel lato è disegnato bene
+			tmpRect = new Rectangle(aDestra.getX(), inBasso.getY(), unitï¿½, unitï¿½); //se le coordinate della figura disegnata non sforano questo quadrato, allora vuol dire che quel lato ï¿½ disegnato bene
 			
 		}else if(corner.equals("in basso a sinistra")){
 			
-			tmpRect = new Rectangle(aSinistra.getX(), inBasso.getY(), unità, unità); //se le coordinate della figura disegnata non sforano questo quadrato, allora vuol dire che quel lato è disegnato bene
+			tmpRect = new Rectangle(aSinistra.getX(), inBasso.getY(), unitï¿½, unitï¿½); //se le coordinate della figura disegnata non sforano questo quadrato, allora vuol dire che quel lato ï¿½ disegnato bene
 			
 		}
 		
@@ -620,7 +620,7 @@ public class Griglia extends JPanel implements MouseMotionListener, MouseListene
 						  	}
 						
 						
-						//controlliamo se la nave era già inserita precedentemente, in tal caso la rimuoviamo
+						//controlliamo se la nave era giï¿½ inserita precedentemente, in tal caso la rimuoviamo
 						for(int j = 0; j< naviInserite.size(); j++) {
 							if(naviInserite.get(j).getNave().getNome().equals(draggedImg.getName())) {
 								naviInserite.remove(j);
@@ -657,7 +657,7 @@ public class Griglia extends JPanel implements MouseMotionListener, MouseListene
 				//System.out.println("draggedImg is null");
 			}
 			
-			//se la partita è iniziata, ed è il mio turno
+			//se la partita ï¿½ iniziata, ed ï¿½ il mio turno
 			if(mf.myData.game.getStato().equals("iniziato") && mf.myData.game.getTurno().getSESSION().equals(mf.myData.getMe().getSESSION())) {
 				
 				Quadrato quadFound = null;
@@ -668,7 +668,7 @@ public class Griglia extends JPanel implements MouseMotionListener, MouseListene
 						
 						if(jcTmp.getBounds().contains(e.getPoint())) {
 
-							// jcTmp è il quadrato clicckato
+							// jcTmp ï¿½ il quadrato clicckato
 							quadFound = jcTmp;
 							
 							break;
@@ -680,9 +680,9 @@ public class Griglia extends JPanel implements MouseMotionListener, MouseListene
 					
 					if(quadFound.isClickato() == false) {
 						
-						stackQuad.add(quadFound); // ogni volta che clicko un quadrato lo aggiungo allo stack, così quando ricevo la risposta del server, so che quella risposta è inidirizzato all'ultimo elemento aggiunto allo stack (in modo da allegerire il pacchetto di risposta del server, poichè non mantiene informazioni riguardanti il quadrato specifico)
+						stackQuad.add(quadFound); // ogni volta che clicko un quadrato lo aggiungo allo stack, cosï¿½ quando ricevo la risposta del server, so che quella risposta ï¿½ inidirizzato all'ultimo elemento aggiunto allo stack (in modo da allegerire il pacchetto di risposta del server, poichï¿½ non mantiene informazioni riguardanti il quadrato specifico)
 						
-						//aggiorniamo il model dicendo che non è più il nostro turno
+						//aggiorniamo il model dicendo che non ï¿½ piï¿½ il nostro turno
 						mf.myData.game.setTurno(mf.myData.game.getAvversario(mf.myData.getMe()));
 						
 						//aggiorniamo la Caption 
@@ -696,14 +696,14 @@ public class Griglia extends JPanel implements MouseMotionListener, MouseListene
 						}
 						
 					}else {
-						mf.updateLog(new LogMessage("Game","Hai già clickato questo quadrato",dtf.format(LocalTime.now())));
+						mf.updateLog(new LogMessage("Game","Hai giï¿½ clickato questo quadrato",dtf.format(LocalTime.now())));
 					}
 				}else {
 					mf.updateLog(new LogMessage("Game","Non hai clickato un quadrato",dtf.format(LocalTime.now())));
 				}
 				
 			}else {
-				mf.updateLog(new LogMessage("Game","Stai premendo su un game non iniziato o non è il tuo turno",dtf.format(LocalTime.now())));
+				mf.updateLog(new LogMessage("Game","Stai premendo su un game non iniziato o non ï¿½ il tuo turno",dtf.format(LocalTime.now())));
 			}
 			
 		}
@@ -723,7 +723,7 @@ public class Griglia extends JPanel implements MouseMotionListener, MouseListene
 		@Override
 		public void mouseEntered(MouseEvent e) {
 			// TODO Auto-generated method stub
-			if(mf.myData.game.getTurno().getSESSION().equals(mf.myData.getMe().getSESSION()) && mf.myData.game.getStato().equals("iniziato")) { // se è il mio turno 
+			if(mf.myData.game.getTurno().getSESSION().equals(mf.myData.getMe().getSESSION()) && mf.myData.game.getStato().equals("iniziato")) { // se ï¿½ il mio turno 
 				this.setCursor(new Cursor(Cursor.HAND_CURSOR));
 			}else {
 				this.setCursor(new Cursor(Cursor.DEFAULT_CURSOR));

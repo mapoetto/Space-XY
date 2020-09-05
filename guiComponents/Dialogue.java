@@ -95,7 +95,7 @@ public class Dialogue extends JPanel{
 	    
 	    g2.drawImage(bk_sinistra, 0, 0, bk_sinistra.getWidth(), bk_sinistra.getHeight(), null);
 	    g2.drawImage(bk_destra,Coordinata_X_bk_destra, Coordinata_Y_bk_destra, bk_destra.getWidth(), bk_destra.getHeight(), null);
-	    //se c'è dello spazio vuoto tra i due spigoli, colmiamolo
+	    //se c'ï¿½ dello spazio vuoto tra i due spigoli, colmiamolo
 	    
 	    g2.setColor(Color.decode("#275e72"));
 	    
@@ -189,7 +189,7 @@ public class Dialogue extends JPanel{
 		
 		this.setBounds(coordX, coordY, width, height);
 		
-		//prendi la metà del totale, poi la metà dell'immagine e sottrai
+		//prendi la metï¿½ del totale, poi la metï¿½ dell'immagine e sottrai
 		
 		while(width <= this.width) {
 			
@@ -244,7 +244,7 @@ public class Dialogue extends JPanel{
 	}
 	
 	private void setAllVisible() { //una volta finita l'animazione del Dialogue puo mostrare i suoi componenti
-		System.out.println("la visibilità: " + SwingUtilities.isEventDispatchThread());
+		System.out.println("la visibilitï¿½: " + SwingUtilities.isEventDispatchThread());
 		
 		this.setLayout(null);
 		
