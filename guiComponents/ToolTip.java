@@ -28,7 +28,7 @@ public class ToolTip extends JTextPane{
 	public ToolTip(String htmlText, int width){
 		super();
 		
-		this.width = (width<100) ? 101 : width; //il minimo consentito ï¿½ 100
+		this.width = (width<100) ? 101 : width; //il minimo consentito è 100
 		this.height = (int)(this.width*0.61649);
 		
 		int widthHTMLTABLE = (int)(this.width * 0.13820);

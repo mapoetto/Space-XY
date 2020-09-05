@@ -33,7 +33,7 @@ public class Page extends JLayeredPane{
 	}
 	
 	
-	//Controlla se ci sono Button o CheckButton in movimento, in tal caso la pagina non ï¿½ pronta per essere interagibile
+	//Controlla se ci sono Button o CheckButton in movimento, in tal caso la pagina non è pronta per essere interagibile
 	public void checkComponentsReady() {
 		int indice = 0;
 		
@@ -41,7 +41,7 @@ public class Page extends JLayeredPane{
 			
 			if(listaComponenti.get(indice) instanceof Button) {
 				
-				if(!((Button)listaComponenti.get(indice)).interagibile && ((Button)listaComponenti.get(indice)).isVisible()) { //se ï¿½ visibile ma non ï¿½ interagibile vuol dire che si sta muovendo
+				if(!((Button)listaComponenti.get(indice)).interagibile && ((Button)listaComponenti.get(indice)).isVisible()) { //se è visibile ma non è interagibile vuol dire che si sta muovendo
 					this.interagibile = false;
 					//System.out.println("ho settato la pagina NON INTERAGIBILE");
 					return;
@@ -66,9 +66,9 @@ public class Page extends JLayeredPane{
 	
 	public boolean entra() {
 		
-		//se la pagina non ï¿½ interagibile esci dal metodo con false
+		//se la pagina non è interagibile esci dal metodo con false
 		if(!this.interagibile) {
-			mf.updateLog(new LogMessage("System","Impossibile far entrare una nuova pagina poichï¿½ ci sono animazioni in corso",dtf.format(LocalTime.now())));
+			mf.updateLog(new LogMessage("System","Impossibile far entrare una nuova pagina poichè ci sono animazioni in corso",dtf.format(LocalTime.now())));
 			return false;
 		}
 		
@@ -116,7 +116,7 @@ public class Page extends JLayeredPane{
 		}
 		
 		do {
-			//System.out.println("Aspetto che i timer (FadeIn) finiscano. FADEIN ï¿½ nell'EDT ? " + SwingUtilities.isEventDispatchThread());
+			//System.out.println("Aspetto che i timer (FadeIn) finiscano. FADEIN è nell'EDT ? " + SwingUtilities.isEventDispatchThread());
 		}while(timerRunning(tmpTimerList));
 		
 		mf.setCurrentPage(this);
@@ -125,11 +125,11 @@ public class Page extends JLayeredPane{
 		
 	}
 	
-	public void esci(Page entraPage) { //la pagina che dovrï¿½ essere mostrata dopo l'uscita
+	public void esci(Page entraPage) { //la pagina che dovrà essere mostrata dopo l'uscita
 		
-		//se la pagina non ï¿½ interagibile esci dal metodo
+		//se la pagina non è interagibile esci dal metodo
 		if(!this.interagibile) {
-			mf.updateLog(new LogMessage("System","Impossibile uscire dalla pagina poichï¿½ ci sono animazioni in corso",dtf.format(LocalTime.now())));
+			mf.updateLog(new LogMessage("System","Impossibile uscire dalla pagina poichè ci sono animazioni in corso",dtf.format(LocalTime.now())));
 			return;
 		}
 		
@@ -166,7 +166,7 @@ public class Page extends JLayeredPane{
 		}
 		
 		do {
-			//System.out.println("Aspetto che i timer (FadeOut) finiscano. FADEOUT ï¿½ nell'EDT ? " + SwingUtilities.isEventDispatchThread());
+			//System.out.println("Aspetto che i timer (FadeOut) finiscano. FADEOUT è nell'EDT ? " + SwingUtilities.isEventDispatchThread());
 		}while(timerRunning(tmpTimerList));
 		
 		this.setVisible(false);

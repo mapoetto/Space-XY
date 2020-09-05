@@ -30,7 +30,7 @@ public class PaginaNavi{
 	private Griglia griglia;
 	
 	
-	public PaginaNavi (Griglia griglia, int x, int y, int unitï¿½) {
+	public PaginaNavi (Griglia griglia, int x, int y, int unità) {
 		
 		this.griglia = griglia;
 		
@@ -43,25 +43,25 @@ public class PaginaNavi{
 		frame2.setLayout(new WrapLayout());
 		
 		ImageIcon icon_nave1 = new ImageIcon(this.getClass().getResource("/nave1.png"));
-		Nave nave1 = new Nave("nave1",griglia, "/nave1.png", this, new Dimension((unitï¿½*4),(unitï¿½*2)), new ImageIcon(icon_nave1.getImage().getScaledInstance((unitï¿½*4), (unitï¿½*2), 1)), 8);
+		Nave nave1 = new Nave("nave1",griglia, "/nave1.png", this, new Dimension((unità*4),(unità*2)), new ImageIcon(icon_nave1.getImage().getScaledInstance((unità*4), (unità*2), 1)), 8);
 		
 		griglia.listaDraggedImgs.add(nave1.getDraggedImg());
 		
 		
 		ImageIcon icon_nave2 = new ImageIcon(this.getClass().getResource("/nave3.png"));
-		Nave nave2 = new Nave("nave2",griglia, "/nave3.png", this, new Dimension((unitï¿½*8),(unitï¿½*2)), new ImageIcon(icon_nave2.getImage().getScaledInstance((unitï¿½*8), (unitï¿½*2), 1)), 16);
+		Nave nave2 = new Nave("nave2",griglia, "/nave3.png", this, new Dimension((unità*8),(unità*2)), new ImageIcon(icon_nave2.getImage().getScaledInstance((unità*8), (unità*2), 1)), 16);
 		
 		griglia.listaDraggedImgs.add(nave2.getDraggedImg());
 		
 		
 		ImageIcon icon_nave3 = new ImageIcon(this.getClass().getResource("/naverossa.png"));
-		Nave nave3 = new Nave("nave3",griglia, "/naverossa.png", this, new Dimension((unitï¿½*4),(unitï¿½*2)), new ImageIcon(icon_nave3.getImage().getScaledInstance((unitï¿½*4), (unitï¿½*2), 1)), 8);
+		Nave nave3 = new Nave("nave3",griglia, "/naverossa.png", this, new Dimension((unità*4),(unità*2)), new ImageIcon(icon_nave3.getImage().getScaledInstance((unità*4), (unità*2), 1)), 8);
 		
 		griglia.listaDraggedImgs.add(nave3.getDraggedImg());
 		
 		
 		ImageIcon icon_nave4 = new ImageIcon(this.getClass().getResource("/razzo1.png"));
-		Nave nave4 = new Nave("nave4",griglia, "/razzo1.png", this, new Dimension((unitï¿½*2),(unitï¿½*2)), new ImageIcon(icon_nave4.getImage().getScaledInstance((unitï¿½*2), (unitï¿½*2), 1)), 4);
+		Nave nave4 = new Nave("nave4",griglia, "/razzo1.png", this, new Dimension((unità*2),(unità*2)), new ImageIcon(icon_nave4.getImage().getScaledInstance((unità*2), (unità*2), 1)), 4);
 		
 		griglia.listaDraggedImgs.add(nave4.getDraggedImg());
 		
@@ -95,7 +95,7 @@ public class PaginaNavi{
 			    	if(draggedImg != null) {
 						draggedImg.ruota();
 					}else {
-						//System.out.println("non c'ï¿½ nulla da ruotare");
+						//System.out.println("non c'è nulla da ruotare");
 					}
 			}
 			
@@ -165,10 +165,10 @@ public class PaginaNavi{
 		lyp.add(nave4,3,0);
 		lyp.add(ruotaButton,2,0);
 		
-		nave2.setBounds(40,10,(unitï¿½*8),(unitï¿½*2));
-		nave1.setBounds(40,160,(unitï¿½*4),(unitï¿½*2));
-		nave3.setBounds(250,160,(unitï¿½*4),(unitï¿½*2));
-		nave4.setBounds(100,300,(unitï¿½*2),(unitï¿½*2));
+		nave2.setBounds(40,10,(unità*8),(unità*2));
+		nave1.setBounds(40,160,(unità*4),(unità*2));
+		nave3.setBounds(250,160,(unità*4),(unità*2));
+		nave4.setBounds(100,300,(unità*2),(unità*2));
 		ruotaButton.setBounds(300,300,100,100);
 		
 		label.add(lyp);

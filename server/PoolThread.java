@@ -26,9 +26,9 @@ public class PoolThread {
 	*/
 	
 	public synchronized static void notifyMyPresence(ServerThread st) {
-		//Dice agli altri thread di notificare ai loro client che la lista degli utenti online autenticati ï¿½ cambiata
+		//Dice agli altri thread di notificare ai loro client che la lista degli utenti online autenticati è cambiata
 		
-		if(listaThread.size() > 1) { // se c'ï¿½ giï¿½ un ServerThread oltre quello attuale
+		if(listaThread.size() > 1) { // se c'è già un ServerThread oltre quello attuale
 			
 			for(ServerThread sthr : listaThread ) {
 				if(!sthr.getSESSION().equals(st.getSESSION()) && sthr.isAuth()) {
@@ -87,7 +87,7 @@ public class PoolThread {
 					listaThread.get(count).setSESSION(null);
 					listaThread.remove(listaThread.get(count));
 					
-					for(ServerThread sthr : listaThread ) {	//dico ai ServerThread restanti che uno di loro ï¿½ stato kickato, e quindi si aggiorna la lista online
+					for(ServerThread sthr : listaThread ) {	//dico ai ServerThread restanti che uno di loro è stato kickato, e quindi si aggiorna la lista online
 						if(sthr.isAuth()) {
 							
 							ArrayList<Utente> tmpList = new ArrayList<Utente>();

@@ -132,9 +132,9 @@ public class ServerThread extends Thread {
 	            							avversarioThread.send(new Pacchetto(CmdCommands.setQuadRed,new StringBuilder(tmpQuad.getName()),null,true));
 		            						
 	            						}else {
-	            							//questo non deve essere mandato, perchï¿½ verrï¿½ mandato un YOUWIN
+	            							//questo non deve essere mandato, perchè verrà mandato un YOUWIN
 	            							
-	            							System.out.println("\n non hai vinto perchï¿½ hai colpito "+ countWin + "ma flottaSize ï¿½: "+ currentGame.getMyFlotta(me).size() + "\n");
+	            							System.out.println("\n non hai vinto perchè hai colpito "+ countWin + "ma flottaSize è: "+ currentGame.getMyFlotta(me).size() + "\n");
 	            							
 	            							resp = new Pacchetto("","",null,true);
 	            							
@@ -155,7 +155,7 @@ public class ServerThread extends Thread {
 	            					ArrayList<Integer> tmpRand = new ArrayList<Integer>();
 	            					tmpRand.add(ThreadLocalRandom.current().nextInt(0, 100 + 1));
 	            					
-	            					avversarioThread.send(new Pacchetto(tmpGame,CmdCommands.playing,tmpRand,true)); //notifica all'avversario che ï¿½ il suo turno
+	            					avversarioThread.send(new Pacchetto(tmpGame,CmdCommands.playing,tmpRand,true)); //notifica all'avversario che è il suo turno
 	            					
 	            				}else if(inputMsg.getSecondParam().equals(CmdCommands.playing)) {
 	            					
@@ -232,7 +232,7 @@ public class ServerThread extends Thread {
 		            				if(inputMsg.getSecondParam() instanceof Utente) {
 		            					
 		            					Utente destinatarioUtente = (Utente)inputMsg.getSecondParam();
-		            					if(PoolThread.getThread(destinatarioUtente.getSESSION()).getMe().getStato() == "free") {//se il destinatario non ï¿½ giï¿½ occupato (lo stato poteva essere preso anche dal secondo paramentro del pacchetto, ma prenderlo dal pooldithread garantisce una sincronizzazione migliore)
+		            					if(PoolThread.getThread(destinatarioUtente.getSESSION()).getMe().getStato() == "free") {//se il destinatario non è già occupato (lo stato poteva essere preso anche dal secondo paramentro del pacchetto, ma prenderlo dal pooldithread garantisce una sincronizzazione migliore)
 			            					PoolThread.getThread(destinatarioUtente.getSESSION()).send(new Pacchetto(CmdCommands.wannaPlayWith,me,null,true));
 				            				
 				            				me.setStato("waiting for response");
@@ -242,10 +242,10 @@ public class ServerThread extends Thread {
 		            						resp = new Pacchetto(CmdCommands.userBusy,"",null,false);
 		            					}
 		            				}else {
-		            					resp = new Pacchetto("Il secondo parametro inviato non ï¿½ un Utente","",null,false);
+		            					resp = new Pacchetto("Il secondo parametro inviato non è un Utente","",null,false);
 		            				}
 	            				}else {
-	            					resp = new Pacchetto("Stai giï¿½ interagendo con qualcuno -> "+ me.getStato(),"",null,false);
+	            					resp = new Pacchetto("Stai già interagendo con qualcuno -> "+ me.getStato(),"",null,false);
 	            				}
 	            				
 	            			}else if(me.getStato() == "free") {
@@ -303,12 +303,12 @@ public class ServerThread extends Thread {
 			            				}
 		            				
 	            					}else {
-	            						resp = new Pacchetto("FATAL ERROR, non c'ï¿½ il parametro utente " + inputMsg.getFirstParam(),"",null,false);
+	            						resp = new Pacchetto("FATAL ERROR, non c'è il parametro utente " + inputMsg.getFirstParam(),"",null,false);
 	            					}
 		            				
 		            				
 	            				}else {
-	            					resp = new Pacchetto("Non so cosa risponderti, oppure Stai giï¿½ interagendo con qualcuno -> "+ me.getStato(),"",null,false);
+	            					resp = new Pacchetto("Non so cosa risponderti, oppure Stai già interagendo con qualcuno -> "+ me.getStato(),"",null,false);
 	            				}
 		            	
 	            		
@@ -318,14 +318,14 @@ public class ServerThread extends Thread {
 	            		
 	            		disconnectFromAnyGame();
 	            		
-	            		if(socket != null) { //se il socket ï¿½ stato kickato giï¿½ dal poolthread ï¿½ inutile chiuderlo di nuovo
+	            		if(socket != null) { //se il socket è stato kickato già dal poolthread è inutile chiuderlo di nuovo
 		            		socket.close();
 		            		System.out.println("Socket not null"+e.getClass());
 	            		}
 	            		
 	            		MainServerXY.updateStatePanel(this, "<html><b><font color=\"red\">Offline</font></b></html>");
 	            		
-	            		//System.out.println("Class-> "+e.getClass()+"\n C'ï¿½ un problema col socket, quindi lo metto offline");
+	            		//System.out.println("Class-> "+e.getClass()+"\n C'è un problema col socket, quindi lo metto offline");
 	            		
 	            	} catch(IOException e) {//eccezzione generata dall'invio del pacchetto o dal reader (EOFException)
 	            		
@@ -381,7 +381,7 @@ public class ServerThread extends Thread {
             ex.printStackTrace();
         } catch (NullPointerException ex) {
         	
-        	if(socket != null) { //se il socket ï¿½ stato kickato giï¿½ dal poolthread ï¿½ inutile chiuderlo di nuovo
+        	if(socket != null) { //se il socket è stato kickato già dal poolthread è inutile chiuderlo di nuovo
         		try {
 					socket.close();
 				} catch (IOException e) {
@@ -390,7 +390,7 @@ public class ServerThread extends Thread {
 				}
     		}
     		MainServerXY.updateStatePanel(this, "<html><b><font color=\"red\">Offline</font></b></html>");
-            //System.out.println("Il socket ï¿½ diventato null, quindi la condizione nel while per l'ascolto perpetuo ha generato un nullPointerException, ma ï¿½ tutto sotto controllo-> " + ex.getMessage());
+            //System.out.println("Il socket è diventato null, quindi la condizione nel while per l'ascolto perpetuo ha generato un nullPointerException, ma è tutto sotto controllo-> " + ex.getMessage());
             
 			try {
 				PoolThread.deleteSocket(this, SESSION);

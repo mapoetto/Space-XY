@@ -31,7 +31,7 @@ public class TextInput extends JTextField{
 	public TextInput(int width) {
 		super();
 
-		this.width = (width<100) ? 101 : width; //il minimo consentito ï¿½ 100
+		this.width = (width<100) ? 101 : width; //il minimo consentito è 100
 		this.height = (int)(this.width*0.29759);
 		
 		this.setOpaque(false);
