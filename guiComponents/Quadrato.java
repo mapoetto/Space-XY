@@ -32,13 +32,14 @@ public class Quadrato extends JLabel implements Serializable, MouseListener{
 	
 	private static final long serialVersionUID = 6545358173380098232L;
 	private String state; //indica il colore del bordo del quadrato
-	private boolean clickato = false; //indica se ï¿½ stato clickato
-	private boolean scritto = false; //indica se il quadrato ï¿½ associato ad una nave
+	private boolean clickato = false; //indica se è stato clickato
+	private boolean scritto = false; //indica se il quadrato è associato ad una nave
 	private int x , y ,width, height;
 	private boolean gameStarted = false;
 	private JLabel puntatore = new JLabel();
 	private Timer tim;
 	private Nave naveAssociata;
+	private boolean rec = false; //tiene traccia se la sua clip è già stata riprodotta una volta 
 	
 	//queste due variabili controllano la visualizzazione del quadrato, in base al turno 
 	private String realState; //indica l'immagine da mostrare (colpita o mancata) all'interno del quadrato
@@ -71,7 +72,7 @@ public class Quadrato extends JLabel implements Serializable, MouseListener{
 	public void updateView(boolean myTurn) {
 		
 		if(myTurn) { 
-			//se ï¿½ il mio turno nascondo tutti i border dei quadrati e anche le mie navi, e mostro solo l'immagine (colpita o mancata)
+			//se è il mio turno nascondo tutti i border dei quadrati e anche le mie navi, e mostro solo l'immagine (colpita o mancata)
 			
 			this.state = "Normal";
 			if(realState != null)
@@ -109,19 +110,22 @@ public class Quadrato extends JLabel implements Serializable, MouseListener{
 			
 		}else if(state.equals("colpito")) {
 			icon = new ImageIcon(new ImageIcon(this.getClass().getResource("/explosion_GOOD.png")).getImage().getScaledInstance(width,height,1));
-			
-			try{
-		  	      AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(this.getClass().getResource("/colpita.wav"));
-		  	      Clip clip = AudioSystem.getClip();
-		  	      clip.open(audioInputStream);
-		  	      FloatControl gainControl = 
-		  	    		    (FloatControl) clip.getControl(FloatControl.Type.MASTER_GAIN);
-		  	    		gainControl.setValue(+1.0f); // Reduce volume by 10 decibels.
-		  	      
-		  	      clip.start( );
-			  	}catch(Exception ex){  
-			  		ex.printStackTrace();
-			  	}
+			if(rec == false) {
+				try{
+			  	      AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(this.getClass().getResource("/colpita.wav"));
+			  	      Clip clip = AudioSystem.getClip();
+			  	      clip.open(audioInputStream);
+			  	      FloatControl gainControl = 
+			  	    		    (FloatControl) clip.getControl(FloatControl.Type.MASTER_GAIN);
+			  	    		gainControl.setValue(+1.0f); // Reduce volume by 10 decibels.
+			  	      
+			  	      clip.start( );
+				  }catch(Exception ex){  
+				  	  ex.printStackTrace();
+				  }
+				
+				rec = true;
+			}
 			
 		}
 		

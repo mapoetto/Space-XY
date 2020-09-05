@@ -144,7 +144,7 @@ public class Nave extends JLabel implements Serializable, MouseListener{
 			
 			if(tmpNave.getName().equals(this.getNome())) {
 				if(tmpNave.isInserita()) {
-					System.out.println("Quadrati giï¿½ interesecati che sto per rimuovere: "+tmpNave.getNave().getQuadratiIntersecati());
+					System.out.println("Quadrati già interesecati che sto per rimuovere: "+tmpNave.getNave().getQuadratiIntersecati());
 					for(Quadrato tmpQuad : tmpNave.getNave().getQuadratiIntersecati()) {
 						
 						for(int j =0; j  < griglia.getMf().myData.getMyFlotta().size(); j++) {

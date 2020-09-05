@@ -5,61 +5,38 @@ import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.FontFormatException;
-import java.awt.Image;
 import java.awt.Point;
-import java.awt.Rectangle;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.ItemEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.io.ByteArrayInputStream;
-import java.io.File;
 import java.io.IOException;
-import java.lang.reflect.InvocationTargetException;
-import java.net.MalformedURLException;
-import java.net.URL;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Base64;
 import java.util.Base64.Decoder;
-import java.util.TimerTask;
-import java.util.concurrent.Executors;
-import java.util.concurrent.ScheduledExecutorService;
-import java.util.concurrent.ScheduledFuture;
-import java.util.concurrent.TimeUnit;
-
 import javax.imageio.ImageIO;
 import javax.sound.sampled.AudioInputStream;
 import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
 import javax.sound.sampled.FloatControl;
-import javax.sound.sampled.LineUnavailableException;
-import javax.sound.sampled.UnsupportedAudioFileException;
 import javax.swing.BorderFactory;
-import javax.swing.DefaultListModel;
-import javax.swing.Icon;
 import javax.swing.ImageIcon;
-import javax.swing.JButton;
 import javax.swing.JEditorPane;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JList;
-import javax.swing.JOptionPane;
-
 import guiComponents.Button;
 import guiComponents.CheckButton;
 import guiComponents.Constants;
 import guiComponents.Dialogue;
 import guiComponents.Griglia;
 import guiComponents.LateralPanel;
-import guiComponents.Nave;
-import guiComponents.NaveInserita;
-import guiComponents.ToolTip;
 import guiComponents.TransparentListCellRenderer;
 import model.Data;
 import guiComponents.Page;
@@ -67,11 +44,9 @@ import guiComponents.PaginaNavi;
 import guiComponents.Quadrato;
 import guiComponents.TextInput;
 
-import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JWindow;
 import javax.swing.ListSelectionModel;
-import javax.swing.OverlayLayout;
 import javax.swing.ScrollPaneConstants;
 import javax.swing.SwingUtilities;
 import javax.swing.Timer;
@@ -85,11 +60,10 @@ import comunicationObj.Pacchetto;
 import comunicationObj.Utente;
 import controller.ClientThread;
 
-import javax.swing.JTextField;
 import javax.swing.JTextPane;
 import javax.swing.JMenuBar;
-import javax.swing.JMenuItem;
 import javax.swing.JCheckBoxMenuItem;
+
 
 public class MainFrame { //VIEW
 	
@@ -98,7 +72,6 @@ public class MainFrame { //VIEW
 	public ClientThread clientThread = null; //CONTROLLER
 	
 	private JLabel label;
-	private JScrollPane scrollLabel;
 	private Page homePage = new Page(this);
 	private Page optionsPage = new Page(this);
 	public  Page giocaPage = new Page(this);
@@ -111,7 +84,7 @@ public class MainFrame { //VIEW
 	public Page currentPage = new Page(this);
 	private JLabel labelLoading;
 	private JFrame frame=new JFrame();
-	private static final String nameVersion = "Version 0.001";
+	private static final String nameVersion = "Version 0.2 BETA";
 	private Decoder decoder = Base64.getDecoder();
 	private JFrame frameLog = new JFrame();
 	private boolean logCreated = false;
@@ -121,8 +94,6 @@ public class MainFrame { //VIEW
     private Clip clipLOSING= null;
 	private Thread thread_backgroundAudio = null;
     private static JEditorPane logMessaggi = null;
-    private String hostname = "localhost";
-    private int port = 9090;
     private ArrayList<Page> pagine = new ArrayList<Page>();
     private Dialogue dia = null;
     
@@ -134,6 +105,8 @@ public class MainFrame { //VIEW
 	public boolean playMusic = true;
 	public PaginaNavi pagNavi;
 	
+	public TextInput formPortServer;
+	public TextInput formNameServer;
 	public JTextPane lblError;
 	public JTextPane lblLobby;
 	public JTextPane lblCaption;
@@ -157,7 +130,7 @@ public class MainFrame { //VIEW
     
 	private ArrayList<LogMessage> stackLog = new ArrayList<LogMessage>();
 	private DateTimeFormatter dtf = DateTimeFormatter.ofPattern("HH:mm:ss");  
-	
+
 	public JList list = null;
 	
 	/**
@@ -167,13 +140,13 @@ public class MainFrame { //VIEW
 		
 			MainFrame main = new MainFrame();
 			main.initialize();
-				
+
 	}
 	
 	public int getDimensionRatio(int Dimension) {
-		//funzione per rendere il layout responsive
 		
-		int valoreDiRiferimento = 1000; //il layout ï¿½ stato costruito su una base quadrata di 1000 x 1000
+		//funzione per rendere il layout responsive
+		int valoreDiRiferimento = 1000; //il layout è stato costruito su una base quadrata di 1000 x 1000
 		
 		//1000 sta a Dimension come FRAMEDIMENSION sta a x
 		//x:y = a:b 
@@ -187,7 +160,7 @@ public class MainFrame { //VIEW
 	/*
 	 * DESCRIZIONE DELLA LOGICA DI BASE SU CUI FUNZIONA LA GUI
 	 * 
-	 * MainFrame ï¿½ la classe padre (nonchï¿½ il VIEW di MVC)
+	 * MainFrame è la classe padre (nonchè il VIEW di MVC)
 	 * Qui vengono create le pagine della GUI che sono rappresentate dalla classe Page 
 	 * 
 	 * 
@@ -508,17 +481,17 @@ public class MainFrame { //VIEW
 	   		            	
 	   		            	if(griglia.getNaviInserite().size() != griglia.getNaviDaInserire().size()) {
 	   		            		try {
-									clientThread.send(new Pacchetto (CmdCommands.iLostTheGame,"Hai perso perchï¿½ non hai posizionato le navi in tempo",null,true));
+									clientThread.send(new Pacchetto (CmdCommands.iLostTheGame,"Hai perso perchè non hai posizionato le navi in tempo",null,true));
 								} catch (IOException e1) {
 									// TODO Auto-generated catch block
 									e1.printStackTrace();
 									updateLog(new LogMessage("Socket","Errore nell'invio del pacchetto iLostGame",dtf.format(LocalTime.now())));
 								}
 	   		            		
-	   		            		updateLog(new LogMessage("Game","Hai perso la partita, poichï¿½ non hai posizionato tutte le navi in tempo!!",dtf.format(LocalTime.now())));
+	   		            		updateLog(new LogMessage("Game","Hai perso la partita, poichè non hai posizionato tutte le navi in tempo!!",dtf.format(LocalTime.now())));
 	   		            	}else {
 	   		            		
-	   		            		updateLog(new LogMessage("Game","Risultano " + griglia.getNaviInserite().size() + " navi inserite, dunque la partita puï¿½ iniziare",dtf.format(LocalTime.now())));
+	   		            		updateLog(new LogMessage("Game","Risultano " + griglia.getNaviInserite().size() + " navi inserite, dunque la partita può iniziare",dtf.format(LocalTime.now())));
 	   		            		
 	   		            		//invia le posizioni delle tue navi al server
 	   		            		
@@ -721,9 +694,18 @@ public class MainFrame { //VIEW
     	optionsPage.setPreferredSize(new Dimension(FRAMEDIMENSION, FRAMEDIMENSION));
     	optionsPage.setName("OPTIONS_PAGE");
     	
-    	buttonCheck_ViewGriglia = new CheckButton(true, getDimensionRatio(70), getDimensionRatio(453), getDimensionRatio(390), "Se attivo, divide la vista della griglia in base al turno del giocatore.");
+    	formPortServer = new TextInput(getDimensionRatio(150));
+    	formPortServer.setText("9090");
+    	formPortServer.setEditable(true);
+    	formPortServer.setBounds(getDimensionRatio(550), getDimensionRatio(340), getDimensionRatio(150), getDimensionRatio(48));
     	
-    	buttonCheck_Log = new CheckButton(showLog, getDimensionRatio(70), getDimensionRatio(453), getDimensionRatio(465), "Se attivo, viene mostrato una finestra con il log.");
+    	formNameServer = new TextInput(getDimensionRatio(265));
+    	formNameServer.setText("maposerver.ddns.net");
+    	formNameServer.setEditable(true);
+    	formNameServer.setBounds(getDimensionRatio(250), getDimensionRatio(320), getDimensionRatio(261), getDimensionRatio(75));
+    	buttonCheck_ViewGriglia = new CheckButton(true, getDimensionRatio(70), getDimensionRatio(453), getDimensionRatio(430), "Se attivo, divide la vista della griglia in base al turno del giocatore.");
+    	
+    	buttonCheck_Log = new CheckButton(showLog, getDimensionRatio(70), getDimensionRatio(453), getDimensionRatio(505), "Se attivo, viene mostrato una finestra con il log.");
     	
     	buttonCheck_Log.addMouseListener(new MouseAdapter() {
     		public void mouseClicked(MouseEvent e) {
@@ -738,7 +720,7 @@ public class MainFrame { //VIEW
     		}
     	});
     	
-    	buttonCheck_BackgroundAudio = new CheckButton(playMusic, getDimensionRatio(70), getDimensionRatio(453), getDimensionRatio(540), "Se attivo, riproduce la musica in background");
+    	buttonCheck_BackgroundAudio = new CheckButton(playMusic, getDimensionRatio(70), getDimensionRatio(453), getDimensionRatio(580), "Se attivo, riproduce la musica in background");
     	
     	buttonCheck_BackgroundAudio.addMouseListener(new MouseAdapter() {
     		public void mouseClicked(MouseEvent e) {
@@ -770,6 +752,8 @@ public class MainFrame { //VIEW
     	lblVersion2.setForeground(Color.BLACK);
     	lblVersion2.setBounds(getDimensionRatio(850), getDimensionRatio(925), getDimensionRatio(151), getDimensionRatio(25));
     	
+    	optionsPage.add(formPortServer, 4, 0);
+    	optionsPage.add(formNameServer, 5, 0);
     	optionsPage.add(buttonCheck_Log, 6, 0);
     	optionsPage.add(buttonCheck_BackgroundAudio, 7, 0);
     	optionsPage.add(buttonCheck_ViewGriglia, 8, 0);
@@ -798,7 +782,7 @@ public class MainFrame { //VIEW
     	 lblGimmeUsr.setFont(font);
     	 lblGimmeUsr.setForeground(Color.white);
     	 lblGimmeUsr.setBounds(getDimensionRatio(250), getDimensionRatio(345), getDimensionRatio(531), getDimensionRatio(95));
-    	 lblGimmeUsr.setText("<html><center><font size=\""+getDimensionRatio(9)+"\" style=\" color: white; font-family: " + font.getFamily() + ";\">Benvenuto Comandante !!<br /> qual ï¿½ il suo nome ?</font></center></html>");
+    	 lblGimmeUsr.setText("<html><center><font size=\""+getDimensionRatio(9)+"\" style=\" color: white; font-family: " + font.getFamily() + ";\">Benvenuto Comandante !!<br /> qual è il suo nome ?</font></center></html>");
     	 
     	 TextInput username = new TextInput(getDimensionRatio(181));
     	 username.setText("Nome");
@@ -812,12 +796,18 @@ public class MainFrame { //VIEW
     		public void mouseClicked(MouseEvent e) {
     			if(username.getText().length() >= 3) {
 	    	        if(clientThread == null) {
-	    	        	clientThread = new ClientThread(hostname, port, username.getText(), istance);
-	        	        clientThread.start();
-	        	        
-	        	        giocaPage.setVisible(false);
-	        	        
-	        	        loadingPage.entra();
+	    	        	try {
+	    	        		clientThread = new ClientThread(formNameServer.getText(), Integer.valueOf(formPortServer.getText()), username.getText(), istance);
+	    	        		
+		        	        clientThread.start();
+		        	        
+		        	        giocaPage.setVisible(false);
+		        	        
+		        	        loadingPage.entra();
+	    	        	}
+	    	        	catch(NumberFormatException error_port) {
+	    	        		updateLog(new LogMessage("System","Specificare una porta numerica",dtf.format(LocalTime.now())));
+	    	        	}
 	    	        }
     			}
     		}

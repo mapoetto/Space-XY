@@ -95,7 +95,7 @@ public class Dialogue extends JPanel{
 	    
 	    g2.drawImage(bk_sinistra, 0, 0, bk_sinistra.getWidth(), bk_sinistra.getHeight(), null);
 	    g2.drawImage(bk_destra,Coordinata_X_bk_destra, Coordinata_Y_bk_destra, bk_destra.getWidth(), bk_destra.getHeight(), null);
-	    //se c'ï¿½ dello spazio vuoto tra i due spigoli, colmiamolo
+	    //se c'è dello spazio vuoto tra i due spigoli, colmiamolo
 	    
 	    g2.setColor(Color.decode("#275e72"));
 	    
@@ -137,7 +137,7 @@ public class Dialogue extends JPanel{
 	   	frase.setBounds(mf.getDimensionRatio(40), mf.getDimensionRatio(45), mf.getDimensionRatio(535), mf.getDimensionRatio(180));
 	   	frase.setText("<html><center><div style=\"border: 2px solid white; padding: 5px; background-color: rgba(5,5,5, 0.5);\"><font size=\""+mf.getDimensionRatio(9)+"\" style=\"color: white; font-family: " + font.getFamily() + ";\">Comandante, l'utente <b>" + ut.getUsername() + "</b> vuole sfidarla, accetta la sfida?</font></div></center></html>");
 		
-		Button YESButton = new Button("Si", mf.getDimensionRatio(100), mf.getDimensionRatio(150), mf.getDimensionRatio(230));
+		Button YESButton = new Button("Si", mf.getDimensionRatio(100), mf.getDimensionRatio(150), mf.getDimensionRatio(230), false);
 		YESButton.interagibile = true;
 		YESButton.setVisible(false);
 		YESButton.setPreferredSize(new Dimension(mf.getDimensionRatio(389), mf.getDimensionRatio(611)));
@@ -153,7 +153,7 @@ public class Dialogue extends JPanel{
     		}
     	});
 		
-		Button NOButton = new Button("No", mf.getDimensionRatio(100), mf.getDimensionRatio(350), mf.getDimensionRatio(230));
+		Button NOButton = new Button("No", mf.getDimensionRatio(100), mf.getDimensionRatio(350), mf.getDimensionRatio(230), false);
 		NOButton.interagibile = true;
 		NOButton.setVisible(false);
 		NOButton.setPreferredSize(new Dimension(mf.getDimensionRatio(501), mf.getDimensionRatio(611)));
@@ -189,7 +189,7 @@ public class Dialogue extends JPanel{
 		
 		this.setBounds(coordX, coordY, width, height);
 		
-		//prendi la metï¿½ del totale, poi la metï¿½ dell'immagine e sottrai
+		//prendi la metà del totale, poi la metà dell'immagine e sottrai
 		
 		while(width <= this.width) {
 			
@@ -244,7 +244,7 @@ public class Dialogue extends JPanel{
 	}
 	
 	private void setAllVisible() { //una volta finita l'animazione del Dialogue puo mostrare i suoi componenti
-		System.out.println("la visibilitï¿½: " + SwingUtilities.isEventDispatchThread());
+		System.out.println("la visibilità: " + SwingUtilities.isEventDispatchThread());
 		
 		this.setLayout(null);
 		
